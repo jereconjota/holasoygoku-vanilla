@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola soy Goku!</title>
+    <link id="favicon" rel="shortcut icon" type="image/png" href="/images/esfera.ico" src="">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div class="row">
+                <div class="card text-center h-100">
+                    <h1 class="card-title" id="nombre-personaje"></h1>
+                    <img class="card-img-top avatar border rounded-circle mx-auto d-block" src="" alt="" id="avatar">
+                    <div class="card-body" id="frase">
+                        <!-- <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores accusamus sunt quidem rerum laborum nesciunt repudiandae ipsum magni debitis similique, sed et quisquam vitae veritatis, aut, tempora quo autem dolore.</p> -->
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    
+    <script>
+
+        function cargarPersonaje() { 
+            let avatar = document.getElementById('avatar')
+            let nombre = document.getElementById('nombre-personaje')
+            let frase = document.getElementById('frase')
+            let rdm = Math.floor(Math.random()*(10-1))+1 //numero random de 1 a 9
+            avatar.src = "/images/"+rdm+".png"
+
+            switch(rdm){
+                case 1:
+                nombre.innerHTML = 'Goku'
+                frase.innerHTML = '"Oye, no te emociones, no nos has vencido todavía."'
+                break
+                case 2:
+                nombre.innerHTML = 'Vegeta'
+                frase.innerHTML = '"¿Qué sucede Freezer? ¿Tu cerebro es otro de tus músculos débiles y sin usar?"'
+                break
+                case 3:
+                nombre.innerHTML = 'Bulma'
+                frase.innerHTML = '"¡Que alguien me ayude! ¡Soy demasiado joven y bonita para morir!"' 
+                break
+                case 4:
+                nombre.innerHTML = 'Piccoro'
+                frase.innerHTML = '"Dejenme en paz,el que este verde no significa que no este maduro"'
+                break
+                case 5:
+                nombre.innerHTML = 'Maestro Roshi'
+                frase.innerHTML = '"Hay que trabajar, Hay que aprender, hay que comer, hay que descansar y tambien hay que jugar"'
+                break
+                case 6:
+                nombre.innerHTML = 'Goku'
+                frase.innerHTML = '"Prefiero ser un mono descerebrado que un monstruo sin corazón"'
+                break
+                case 7:
+                nombre.innerHTML = 'Broli'
+                frase.innerHTML = '"¿Qué es ser conciente?"'
+                break
+                case 8:
+                nombre.innerHTML = 'Freezer'
+                frase.innerHTML = '"Dudo que necesite una presentación, pero por si acaso, soy el poderoso Freezer y sí, todas las historias horribles que has escuchado son ciertas"'
+                break
+                case 9:
+                nombre.innerHTML = 'Gohan'
+                frase.innerHTML = '"¿Pelear contigo? Vengo a matarte"'
+                break
+                default:
+                nombre.innerHTML = ''
+                frase.innerHTML = ''
+            }
+        }
+        cargarPersonaje()
+       
+    </script>
+</body>
+</html>

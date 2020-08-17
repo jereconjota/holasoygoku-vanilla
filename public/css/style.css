@@ -1,0 +1,28 @@
+html, body {
+    height: 100%;
+    background-color: #FF8C00 ;
+    font-family: 'Press Start 2P', cursive;
+    /* font-size: 20px; */
+}
+
+.card{
+    background-color: #FF8C00 ;
+    border: none;
+}
+.avatar{
+    height:300px; 
+    width: 300px; 
+    background-color: #EFEFEF;
+    margin: 20px;
+}
+
+.avatar-especifico{
+    height:400px; 
+    width: 400px; 
+    background-color: #EFEFEF;
+    margin: 20px;
+}
+
+.border {
+    border: 5px solid #000000!important;
+}
