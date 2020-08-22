@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hola soy Goku!</title>
-    <link id="favicon" rel="shortcut icon" type="image/png" href="images/esfera.png" src="">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link id="favicon" rel="shortcut icon" type="image/png" href="images/esfera.png" src="images/esfera.png">
+    <!-- <link rel="stylesheet" href="/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
@@ -15,21 +18,26 @@
                 <div class="card text-center h-100">
                     <h1 class="card-title" id="nombre-personaje"></h1>
                     <img class="card-img-top avatar border rounded-circle mx-auto d-block" src="" alt="" id="avatar">
-                    <div class="card-body" id="frase">
-                    <!-- -->
+                    <div class="card-body" id="frase"></div>
+                    <div class="card-footer bg-transparent mt-3">
+                        <a href="https://chrome.google.com/webstore/detail/holasoygoku/hbbekfbjacenidjehnpejejkdnfpjajf?hl=es" style="font-size:16px;">Descargar Extension</a>
+                        <a href='https://cafecito.app/jereconjota' rel='noopener' target='_blank'><img srcset='https://cdn.cafecito.app/imgs/buttons/button_5.png 1x, https://cdn.cafecito.app/imgs/buttons/button_5_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_5_3.75x.png 3.75x' src='https://cdn.cafecito.app/imgs/buttons/button_5.png' alt='Invitame un café en cafecito.app' class="my-3"/></a>
+                        <!-- <a href="https://github.com/jereconjota/holasoygoku-extension/tree/master" style="font-size:16px;">Ver en GitHub</a> -->
                     </div>
                 </div>
             </div>
-        </div>  
-    </div>
-    <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script>
+        </div>
+    </div> 
+    
+    <!-- <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script> -->
     <script>
     function cargarPersonaje() { 
         let avatar = document.getElementById('avatar')
         let nombre = document.getElementById('nombre-personaje')
         let frase = document.getElementById('frase')
         let rdm = Math.floor(Math.random()*(24-1))+1 //numero random de 1 a 23
+        // rdm=10
         avatar.src = "/images/"+rdm+".png"
         switch(rdm){
             case 1:
@@ -70,7 +78,7 @@
             break
             case 10:
             nombre.innerHTML = 'Vegeta'
-            frase.innerHTML = '"Me parece difícil de creer que mis células están en tu cuerpo. ¿Cómo fue que resultaste ser tan feo? Que desperdicio. Aunque es obvio de donde sacaste tu fuerza."'
+            frase.innerHTML = '"Mientras el enemigo siga de pie, yo seguiré peleando"'
             break
             case 11:
             nombre.innerHTML = 'Goku'
@@ -102,7 +110,7 @@
             break
             case 18:
             nombre.innerHTML = 'Bardock'
-            frase.innerHTML = '"Kakaroto tu debes cumplir mi objetivo...tu seras quien vengara la muerte de todos los Saiyajin y la desaparición del Planeta Vegeta"'
+            frase.innerHTML = '"Kakarotto, ésta es mi voluntad, ¡debes obedecerme! Vengarás a los saiyajin y al planeta Vegeta; confío en ti."'
             break
             case 19:
             nombre.innerHTML = 'Freezer'
