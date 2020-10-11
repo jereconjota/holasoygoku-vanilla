@@ -1,0 +1,69 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola soy Goku!</title>
+    <link id="favicon" rel="shortcut icon" type="image/png" href="images/esfera.png" src="images/esfera.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="text-center my-5">
+            <h1 class="mb-5"> Agregar personaje </h1>
+            <h5 id="name"></h5>
+            <a target="_blank" href="" id="login">Login</a>
+            <a target="_blank" href="" id="logout" style="display: none;">Logout </a>
+        </div>
+        <div class="text-center" id="loading" style='display:none'>
+            <img src="https://www.google.com/images/spin-32.gif?a" alt="loading">
+        </div>  
+        <div class="alert alert-warning alert-dismissible fade show text-center" role="alert" id="avisoSoloImagenes" style='display:none'>
+            <strong>Oye no!</strong> solo podes subir imagenes.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="x-close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="alert alert-success alert-dismissible fade show text-center" role="alert" id="avisoGuardastePersonaje" style='display:none'>
+            <strong>Bien!</strong> se guardo el personaje.
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close" id="x-close2">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div>
+            <form id="new-character-form">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Nombre</label>
+                    <input type="text" class="form-control" id="nombrePersonaje" placeholder="Goku">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Frase</label>
+                    <!-- <input type="text" class="form-control" id="frasePersonaje" placeholder="Hola soy Goku"> -->
+                    <textarea class="form-control" id="frasePersonaje" rows="2" placeholder="Hola soy Goku"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlFile1">Imagen</label>
+                    <input type="file" class="form-control-file" id="imagenPersonaje">
+                </div>
+                <div class="text-center mt-5">
+                    <button class="btn btn-dark" type="submit" disabled id="btnGuardarPersonaje">Guardar</button>
+                </div> 
+            </form>
+        </div>
+    </div>
+    
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>    Firebase App (the core Firebase SDK) is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-storage.js"></script>
+    <script src="js/main.js"></script>
+</body>
+

@@ -12,133 +12,31 @@
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <div class="container h-100">
-        <div class="row h-100 justify-content-center align-items-center">
-            <div class="row">
-                <div class="card text-center h-100">
-                    <h1 class="card-title" id="nombre-personaje"></h1>
-                    <img class="card-img-top avatar border rounded-circle mx-auto d-block" src="" alt="" id="avatar">
-                    <div class="card-body" id="frase"></div>
-                    <div class="card-footer bg-transparent mt-3">
-                        <a href="https://chrome.google.com/webstore/detail/holasoygoku/hbbekfbjacenidjehnpejejkdnfpjajf?hl=es" style="font-size:16px;">Descargar Extension</a>
-                        <a href='https://cafecito.app/jereconjota' rel='noopener' target='_blank'><img srcset='https://cdn.cafecito.app/imgs/buttons/button_5.png 1x, https://cdn.cafecito.app/imgs/buttons/button_5_2x.png 2x, https://cdn.cafecito.app/imgs/buttons/button_5_3.75x.png 3.75x' src='https://cdn.cafecito.app/imgs/buttons/button_5.png' alt='Invitame un café en cafecito.app' class="my-3"/></a>
-                        <!-- <a href="https://github.com/jereconjota/holasoygoku-extension/tree/master" style="font-size:16px;">Ver en GitHub</a> -->
+    <div class="container">
+        <main>
+            <div class="row justify-content-center align-items-center">
+                <div class="row">
+                    <div class="card text-center">
+                        <h1 id="nombre-personaje"></h1>
+                        <div class="mb-1">
+                            <img class="card-img-top avatar border rounded-circle mx-auto d-flex justify-content-center" src="" alt="" id="avatar">
+                        </div>    
+                        <div class="card-body" id="frase"></div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div> 
+        </main>
+        <footer class="row justify-content-center align-items-center card-footer bg-transparent">
+            <div class="text-center">
+                <a href="https://chrome.google.com/webstore/detail/holasoygoku/hbbekfbjacenidjehnpejejkdnfpjajf?hl=es" class="btn btn-dark btn-sm" role="button" aria-pressed="true" target='_blank'>Descargar Extension</a>
+                <a href="https://github.com/jereconjota/holasoygoku-extension/" class="btn btn-dark btn-sm" role="button" aria-pressed="true" rel='noopener' target='_blank'>Repositorio</a>
+                <a href="https://cafecito.app/jereconjota" class="btn btn-dark btn-sm" role="button" aria-pressed="true" rel='noopener' target='_blank'>Invitame un Cafecito</a>
+            </div>
+        </footer>
+    </div>
     
-    <!-- <script src="js/jquery.js"></script>
-    <script src="js/bootstrap.min.js"></script> -->
-    <script>
-    function cargarPersonaje() { 
-        let avatar = document.getElementById('avatar')
-        let nombre = document.getElementById('nombre-personaje')
-        let frase = document.getElementById('frase')
-        let rdm = Math.floor(Math.random()*(24-1))+1 //numero random de 1 a 23
-        // rdm=10
-        avatar.src = "/images/"+rdm+".png"
-        switch(rdm){
-            case 1:
-            nombre.innerHTML = 'Goku'
-            frase.innerHTML = '"Oye, no te emociones, no nos has vencido todavía."'
-            break
-            case 2:
-            nombre.innerHTML = 'Vegeta'
-            frase.innerHTML = '"¿Qué sucede Freezer? ¿Tu cerebro es otro de tus músculos débiles y sin usar?"'
-            break
-            case 3:
-            nombre.innerHTML = 'Bulma'
-            frase.innerHTML = '"¡Que alguien me ayude! ¡Soy demasiado joven y bonita para morir!"' 
-            break
-            case 4:
-            nombre.innerHTML = 'Piccoro'
-            frase.innerHTML = '"Dejenme en paz,el que este verde no significa que no este maduro"'
-            break
-            case 5:
-            nombre.innerHTML = 'Maestro Roshi'
-            frase.innerHTML = '"Hay que trabajar, Hay que aprender, hay que comer, hay que descansar y tambien hay que jugar"'
-            break
-            case 6:
-            nombre.innerHTML = 'Goku'
-            frase.innerHTML = '"Prefiero ser un mono descerebrado que un monstruo sin corazón"'
-            break
-            case 7:
-            nombre.innerHTML = 'Broli'
-            frase.innerHTML = '"¿Qué es ser consciente?"'
-            break
-            case 8:
-            nombre.innerHTML = 'Freezer'
-            frase.innerHTML = '"Soy el poderoso Freezer y sí, todas las historias horribles que has escuchado son ciertas"'
-            break
-            case 9:
-            nombre.innerHTML = 'Gohan'
-            frase.innerHTML = '"¿Pelear contigo? Vengo a matarte"'
-            break
-            case 10:
-            nombre.innerHTML = 'Vegeta'
-            frase.innerHTML = '"Mientras el enemigo siga de pie, yo seguiré peleando"'
-            break
-            case 11:
-            nombre.innerHTML = 'Goku'
-            frase.innerHTML = '🖤'
-            break
-            case 12:
-            nombre.innerHTML = 'Goku'
-            frase.innerHTML = '"A veces la vida es muy incierta para los arrepentimientos."'
-            break
-            case 13:
-            nombre.innerHTML = 'Nº17'
-            frase.innerHTML = '"Sacrificarse por el bien de los demás... es un acto muy humano"'
-            break
-            case 14:
-            nombre.innerHTML = 'Octavio'
-            frase.innerHTML = '"Goku no puede morir, pase lo que pase yo lo protegere"'
-            break
-            case 15:
-            nombre.innerHTML = 'Nº16'
-            frase.innerHTML = '"Gohan, protege a los seres vivos y a las plantas de este mundo que tanto ame... te lo encargo"'  
-            break
-            case 16:
-            nombre.innerHTML = 'Cell'
-            frase.innerHTML = '"¡Necio! ¿¡No te das cuenta que estás peleando contra el arma perfecta?!"'
-            break
-            case 17:
-            nombre.innerHTML = 'Maestro Karin'
-            frase.innerHTML = '"Pelea hasta estar satisfecho."'
-            break
-            case 18:
-            nombre.innerHTML = 'Bardock'
-            frase.innerHTML = '"Kakarotto, ésta es mi voluntad, ¡debes obedecerme! Vengarás a los saiyajin y al planeta Vegeta; confío en ti."'
-            break
-            case 19:
-            nombre.innerHTML = 'Freezer'
-            frase.innerHTML = '"Antes de comenzar tu patética lucha por sobrevivir, debería advertirte. Tu posibilidad de ganar es inexistente"'
-            break
-            case 20:
-            nombre.innerHTML = 'Vegeta'
-            frase.innerHTML = '"Trunks, Bulma, esto es por ustedes. Esto también es por ti Kakaroto."'
-            break
-            case 21:
-            nombre.innerHTML = 'Krillin'
-            frase.innerHTML = '"Goku, será un gusto pelear contigo de aquí en adelante."'
-            break
-            case 22:
-            nombre.innerHTML = 'Krillin'
-            frase.innerHTML = '"Me gustaría que cambiaras al Androide 17 y 18 a seres humanos, así podrán vivir una vida normal en paz."'
-            break
-            case 23:
-            nombre.innerHTML = 'Majin Boo'
-            frase.innerHTML = '"A pesar de ser un buen niño eres muy Fuerte"'
-            break
-            
-            default:
-            nombre.innerHTML = ''
-            frase.innerHTML = ''
-        }
-    }
-    cargarPersonaje()
-    </script>
+    <script src="js/index.js"></script>
+    
+    
 </body>
 </html>
