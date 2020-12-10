@@ -8,12 +8,19 @@ h1 {
   font-weight: 900;
   font-family: 'Press Start 2P', cursive ;
 }
-
+.form-control2{
+  color: red!important;
+}
 .card{
   background-color: #e76a24 ;
   border: none;
   margin-top: 50px;
+  padding: 10px;
+  /* width: 100%;
+    height: 60vw;
+    object-fit: cover; */
 }
+
 .avatar{
   height:350px; 
   width: 350px; 
@@ -24,14 +31,15 @@ h1 {
 .border {
   border: 5px solid #212529!important;
 }
+.tinyborder{
+  border: 1px solid #212529!important;
+}
 .btn-dark {
   background-color: #282c30;
   margin-bottom: 5px;
 }
 
-/* main{
-  height: 85vh;
-} */
-footer {
-  height: 15vh;
+.row > div[class*='col-'] {
+  display: flex;
+  flex:1 0 auto;
 }

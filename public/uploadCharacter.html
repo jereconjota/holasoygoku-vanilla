@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hola soy Goku!</title>
+    <title>Hola soy Goku! - Nuevo Personaje</title>
     <link id="favicon" rel="shortcut icon" type="image/png" href="images/esfera.png" src="images/esfera.png">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
@@ -15,9 +15,11 @@
     <div class="container mt-5">
         <div class="text-center my-5">
             <h1 class="mb-5"> Agregar personaje </h1>
-            <h5 id="name"></h5>
-            <a target="_blank" href="" id="login">Login</a>
-            <a target="_blank" href="" id="logout" style="display: none;">Logout </a>
+            <div style="border: solid black;display: inline-block;" class="py-3 px-3 userLogin">
+                <p id="name"></p>
+                <a target="_blank" href="" id="login">Login</a>
+                <a target="_blank" href="" id="logout" style="display: none;">Logout </a>
+            </div>
         </div>
         <div class="text-center" id="loading" style='display:none'>
             <img src="https://www.google.com/images/spin-32.gif?a" alt="loading">
@@ -65,5 +67,138 @@
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-storage.js"></script>
     <script src="js/main.js"></script>
+    <script>
+
+        // // Saves a new message on the Firebase DB.
+        // function saveCharacter2() {
+        //     // Add a new message entry to the database.
+        //     return firebase.firestore().collection("Characters")
+        //         .add({
+        //             name: getCharactererName(),
+        //             sentence: getCharacterSentence(),
+        //             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+        //         }).then(function(messageRef){
+        //             console.log(messageRef)
+        //         })
+        //         .catch(function (error) {
+        //             console.error("Error writing new message to database", error);
+        //         });
+        // }
+
+        // Saves a new message containing an image in Firebase.
+        // This first saves the image in Firebase storage.
+        function saveCharacter() {
+            // 1 - We add a message with a loading icon that will get updated with the shared image.
+            console.log('2')
+            firebase.firestore().collection("Characters")
+                .add({
+                    name: getCharactererName(),
+                    sentence: getCharacterSentence(),
+                    imageUrl: '',
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                })
+                .then(function (messageRef) {
+                    // 2 - Upload the image to Cloud Storage.
+                    var filePath = 'Characters Images' + "/" + 'user:'+firebase.auth().currentUser.uid + "/" + messageRef.id + '-' + imgCharacter.name
+                    console.log('2.1')
+                    return firebase.storage().ref(filePath).put(imgCharacter)
+                        .then(function (fileSnapshot) {
+                            // 3 - Generate a public URL for the file.
+                            console.log('2.2')
+                            return fileSnapshot.ref.getDownloadURL().then((url) => {
+                                // 4 - Update the chat message placeholder with the image's URL.
+                                console.log('2.3')
+                                document.getElementById('loading').style.display = 'none';
+                                document.getElementById('avisoGuardastePersonaje').style.display = 'block';
+                                setTimeout(function(){document.getElementById('avisoGuardastePersonaje').style.display = 'none'}, 8000);
+
+                                return messageRef.update({
+                                    imageUrl: url,
+                                    storageUri: fileSnapshot.metadata.fullPath,
+                                });
+                            });
+                        });
+                })
+                .catch(function (error) {
+                    console.error("There was an error uploading a file to Cloud Storage:", error);
+                });
+        }
+
+        // Triggered when a file is selected via the media picker.
+        function onMediaFileSelected(event) {
+            event.preventDefault();
+            imgCharacter = event.target.files[0];
+
+            // // Clear the selection in the file picker input.
+            // imageFormElement.reset();
+            
+            imgPersonaje = document.getElementById('imagenPersonaje')
+            // Check if the file is an image.
+            if (!imgCharacter.type.match("image.*")) {
+                imgPersonaje.value = ''
+                avisoSoloImagenes.style.display = 'block';
+                setTimeout(function(){document.getElementById('avisoSoloImagenes').style.display = 'none'}, 4000);
+                return;
+            }
+            toggleButton()
+        }
+
+        function toggleButton() {
+            if (nombrePersonaje.value && frasePersonaje.value && imagenPersonaje.value) {
+                btnGuardarPersonaje.removeAttribute("disabled");
+            } else {
+                btnGuardarPersonaje.setAttribute("disabled", "true");
+            }
+        }
+
+        function getCharactererName() {
+            return nombrePersonaje.value
+        }
+        function getCharacterSentence() {
+            return frasePersonaje.value
+        }
+
+        let nombrePersonaje = document.getElementById('nombrePersonaje')
+        let frasePersonaje = document.getElementById('frasePersonaje')
+        let imagenPersonaje = document.getElementById('imagenPersonaje')
+        let btnGuardarPersonaje = document.getElementById('btnGuardarPersonaje')
+        let newCharacterForm = document.getElementById('new-character-form')
+        var avisoSoloImagenes = document.getElementById("avisoSoloImagenes")
+        var avisoGuardastePersonaje = document.getElementById("avisoGuardastePersonaje")
+        let imgCharacter
+        let xclose = document.getElementById("x-close")
+        let xclose2 = document.getElementById("x-close2")
+
+        //Sing In
+        signOutButtonElement.addEventListener("click", (e)=>{
+            e.preventDefault()
+            signOut()
+        });
+        //Sing Out
+        signInButtonElement.addEventListener("click", (e)=>{
+            e.preventDefault()
+            signIn()
+        });
+
+        btnGuardarPersonaje.addEventListener('click', (e)=>{
+            e.preventDefault()
+            console.log('1')
+            document.getElementById('loading').style.display = 'block';
+
+            saveCharacter()
+            console.log('3')
+            newCharacterForm.reset()
+        })
+
+        xclose.addEventListener('click', (e)=>{
+            document.getElementById('avisoSoloImagenes').style.display = 'none'
+        })
+        xclose2.addEventListener('click', (e)=>{
+            document.getElementById('avisoGuardastePersonaje').style.display = 'none'
+        })
+        imagenPersonaje.addEventListener("change", onMediaFileSelected);
+        nombrePersonaje.addEventListener("change", toggleButton);
+        frasePersonaje.addEventListener("change", toggleButton);
+    </script>
 </body>
 

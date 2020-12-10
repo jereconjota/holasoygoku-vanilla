@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hola soy Goku! - Personajes</title>
+    <link id="favicon" rel="shortcut icon" type="image/png" href="images/esfera.png" src="images/esfera.png">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+    <small>
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="./index.html">Home</a>
+            </li>
+        </ul>
+    </small>
+
+    <div class="container mb-4" id="container">
+        <div class="row" id="rowCharacters">
+            <!--<div class="col-md-4 col-xs-6">
+                <div class="card">
+                    <img class="card-img-top img-fluid" src="//placehold.it/500x200" alt="Card image cap">
+                    <div class="card-block">
+                        <h4 class="card-title">Card title</h4>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                </div>
+            </div> -->
+        </div> 
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-app.js"></script>
+    <!-- Add Firebase products that you want to use -->
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.2.0/firebase-storage.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        const rowCharacters = document.getElementById("rowCharacters")
+
+        function loadMessages() {
+            // Create the query to load the characters.
+            var query = firebase.firestore().collection("Characters").orderBy("timestamp", "asc");
+
+            // Start listening to the query.
+            query.onSnapshot(function (snapshot) {
+                snapshot.docChanges().forEach(function (change) {
+                    if (change.type === "removed") {
+                        // deleteMessage(change.doc.id);
+                        console.log('ahre')
+                    } else {
+                        let char = change.doc.data();
+
+                        const divcol = document.createElement('div')
+                        divcol.className = "col-lg-4 col-md-6 col-xs-6"
+                        const card = document.createElement('div')
+                        divcol.appendChild(card)
+                        card.className = "card tinyborder text-center"
+
+                        const image = document.createElement('img')
+                        image.src = char.imageUrl
+                        image.className = "card-img-top rounded-circle mb-4"
+
+                        const cardbody = document.createElement('div')
+                        cardbody.className = "card-body"
+                        const small = document.createElement('small')
+                        const h4 = document.createElement('h4')
+                        h4.className = "card-title"
+                        h4.innerHTML = char.name
+
+                        const p = document.createElement('p')
+                        p.className = "card-text"
+                        p.innerHTML = char.sentence
+
+                        small.appendChild(h4)
+                        small.appendChild(p)
+                        cardbody.appendChild(small)
+
+                        card.appendChild(image)
+                        card.appendChild(cardbody)
+
+                        rowCharacters.appendChild(divcol)
+                    }
+                });
+            });
+        }
+        loadMessages()
+    </script>
+</body>

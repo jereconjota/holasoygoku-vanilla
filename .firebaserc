@@ -1,6 +1,7 @@
 {
   "projects": {
     "default": "holasoygokufrases",
-    "holasoygoku": "holasoygokufrases"
+    "holasoygoku": "holasoygokufrases",
+    "holasoygokufrases": "holasoygokufrases"
   }
 }
